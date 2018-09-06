@@ -8,5 +8,5 @@ public interface BSTOper {
     public void addAll( int[] integers );
     public int[] sortedArray() ; // inorder
     public int[] findInRange (int low, int high);
-    
+
 }
