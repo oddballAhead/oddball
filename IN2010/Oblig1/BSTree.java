@@ -17,6 +17,11 @@ public class BSTree implements BSTOper {
         }
 
         //metoder for Node-klassen
+	@Override
+	public String toString() {
+	    return "This is node w/value: " + value + " ";
+	}
+	
         void add(int value) {
             if (value < this.value) {
                 if (left != null) {
@@ -126,20 +131,45 @@ public class BSTree implements BSTOper {
 		if (left == n) {
 		    return this;
 		} else {
-		    left.findParent(n);
+		    Node ret = left.findParent(n);
+		    if (ret != null) {
+			return ret;
+		    }
 		}
 	    }
 	    if (right != null) {
 		if (right == n) {
 		    return this;
 		} else {
-		    right.findParent(n);
+		    Node ret = right.findParent(n);
+		    if (ret != null) {
+			return ret;
+		    }
 		}
 	    }
 	    return null;
 	}
 
+	//rekursiv metode for getNode() -- hjelpemetode for testing
+	Node getNode(int value) {
+	    if (this.value == value) {
+		return this;
+	    } else if (left != null) {
+		Node ret = left.getNode(value);
+		if (ret != null) {
+		    return ret;
+		}
+	    }
+	    if (right != null) {
+		Node ret = right.getNode(value);
+		if (ret != null) {
+		    return ret;
+		}
+	    }
+	    return null;
+	}
 
+	
     }
 
 
@@ -251,10 +281,23 @@ public class BSTree implements BSTOper {
 
 
     public void printTre() {
-
+	
     }
 
-    public Node {}
+    public String getString(int value) {
+    	return root.getNode(value).toString();
+    } 
+
+    public String nodeToString(Node n) {
+	return n.toString();
+    }
+
+    public Node getNode(int value) {
+	// if (root.value == value) {
+	//     return root;
+	// }
+	return root.getNode(value);
+    }
 
 
 }
