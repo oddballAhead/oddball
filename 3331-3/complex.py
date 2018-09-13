@@ -45,8 +45,7 @@ class Complex:
         return Complex((-1 * self.real) + other.real, (-1 * self.imag) + other.imag)
 
     def __rmul__(self, other):
-        if
-        return Complex((self.real * other.real) + (self.imag * other.imag) * -1, (self.real * other.imag) + (self.imag * other.real))
+        return Complex((other.real * self.real) + (other.imag * self.imag) * -1, (other.real * self.imag) + (other.imag * self.real))
 
 
     # Optional, possibly useful methods
