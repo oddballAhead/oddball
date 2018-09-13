@@ -82,7 +82,11 @@ c = Complex(3, 4)
 d = 4 * c - 2
 print(d)
 print(type(d))
-complex6 = Complex(4, -3)
-print(complex6 * complex5)
+#complex6 = Complex(4, -3)
+#print(complex6 * complex5)
+x = (3+4j)
+y = 4 * x - 2
+print(y)
+print(type(y))
 
 # test_add()
