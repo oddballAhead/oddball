@@ -1,0 +1,8 @@
+Hi, this is a document with some words.
+There are several lines in this document
+Do you need help reading?
+
+Hello, there
+Lala-land
+
+Now I have added more lines!
