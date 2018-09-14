@@ -12,6 +12,21 @@
   private, men jeg har gjort dem til package istedet slik at jeg kan bruke de i test-
   programmet.
 
-- remove() er en boolsk metode og jeg tolker det som at den skal returnere falks hvis
+- remove() er en boolsk metode og jeg tolker det som at den skal returnere false hvis
   metoden feiler på å fjerne den spesifiserte noden, og true ellers.
   
+-----------------------------
+
+- for aa kompilere programmet bare skriv javac *.java
+
+- main-metoden ligger i Test.java
+
+- de private metodene i BSTree.java har jeg gjort til
+  package istedet, slik at de kan testes i Test.java,
+  men de skal egentlig vaere private
+
+- tror alt fungerer som det skal
+
+- hvis jeg kan faa tilbakemelding vil jeg vite om noe er feil, 
+  og hvis ikke, saa hadde det kanskje vaert fint aa vite hvordan algoritmene kunne
+  vaert mer effektive.
