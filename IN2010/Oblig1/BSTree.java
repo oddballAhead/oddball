@@ -150,25 +150,6 @@ public class BSTree implements BSTOper {
 	    return null;
 	}
 
-	//rekursiv metode for getNode() -- hjelpemetode for testing
-	// Node getNode(int value) {
-	//     if (this.value == value) {
-	// 	return this;
-	//     } else if (left != null) {
-	// 	Node ret = left.getNode(value);
-	// 	if (ret != null) {
-	// 	    return ret;
-	// 	}
-	//     }
-	//     if (right != null) {
-	// 	Node ret = right.getNode(value);
-	// 	if (ret != null) {
-	// 	    return ret;
-	// 	}
-	//     }
-	//     return null;
-	// }
-
 	// rekursiv metode for find()
 	Node find(int value) {
 	    if (this.value == value) {
@@ -227,16 +208,47 @@ public class BSTree implements BSTOper {
 	    }
 	    return;
 	}
-	    
+
+        // rekursiv metode for remove()
+        boolean remove (int value, Node parent) {
+            if (value < this.value) {
+                if (left != null) {
+                    return left.remove(value, this);
+                } else {
+                    return false;
+                }
+            } else if (value > this.value) {
+                if (right != null) {
+                    return right.remove(value, this);
+                } else {
+                    return false;
+                }
+            } else {
+                if (left != null && right != null) {
+                    this.value = right.findSmallest();
+                    right.remove(this.value, this);
+                } else if (parent.left == this) {
+                    parent.left = (left != null) ? left : right;
+                } else if (parent.right == this) {
+                    parent.right = (left != null) ? left : right;
+                }
+                return true;
+            }
+        }
+
+        
+
+
+    }	    
 	
 	
-    }
 
-
-
+    
 
     // konstruktører til BSTree
-    BSTree() {}
+    BSTree() {
+        this.size = 0;
+    }
     BSTree(Node r) {
         this.root = r;
 	this.size = 1;
@@ -254,10 +266,30 @@ public class BSTree implements BSTOper {
         }
     }
 
-    public boolean remove (int value) {  /// UNFINISHED!
-        return true;
+    public boolean remove(int value) {
+        if (root == null)
+            return false;
+        else {
+            if (root.value == value) {
+                Node auxRoot = new Node(0);
+                auxRoot.left = root;
+                boolean result = root.remove(value, auxRoot);
+                root = auxRoot.left;
+                return result;
+            } else {
+                return root.remove(value, null);
+            }
+        }
     }
 
+    // public int size() {
+    //     if (root == null) {
+    //         return 0;
+    //     } else {
+    //         return size;
+    //     }
+    // }
+    
     public int size() {
         if (root == null) {
             return 0;

@@ -70,5 +70,13 @@ public class Test {
 	System.out.println(tree.nodeToString(tree.findGrandparent(tree.find(1))));
 	System.out.println(tree.nodeToString(tree.findGrandparent(tree.find(33))));
 	System.out.println(tree.nodeToString(tree.findGrandparent(tree.find(64))));
+
+        System.out.println();
+        tree.remove(24);
+        tree.printTree();
+        System.out.println();
+        
+        tree.remove(14);
+        tree.printTree();
     }
 }
