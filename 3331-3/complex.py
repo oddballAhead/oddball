@@ -1,5 +1,5 @@
 import math
-from test_complex import *
+# from test_complex import *
 
 class Complex:
 
@@ -17,7 +17,7 @@ class Complex:
     # Assignment 3.3
 
     def conjugate(self):
-        self.imag = self.imag * -1
+        return Complex(self.real, self.imag * -1)
 
     def modulus(self):
         return(math.sqrt((self.real*self.real) + (self.imag*self.imag)))
@@ -58,10 +58,10 @@ class Complex:
     def __complex__(self):
         pass
 
+
 complex = Complex(5, 7)
 print(complex)
-complex.conjugate()
-print(complex)
+print(complex.conjugate())
 print(complex.modulus())
 complex2 = Complex(4, 3)
 print(complex2.modulus())
@@ -82,11 +82,14 @@ c = Complex(3, 4)
 d = 4 * c - 2
 print(d)
 print(type(d))
-#complex6 = Complex(4, -3)
-#print(complex6 * complex5)
+
+##  complex6 = Complex(4, -3)
+##  print(complex6 * complex5)
+
 x = (3+4j)
 y = 4 * x - 2
 print(y)
 print(type(y))
+
 
 # test_add()
