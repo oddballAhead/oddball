@@ -54,14 +54,21 @@ public class Test {
 	System.out.println("Testing findParent():");
 	System.out.println(tree.getString(24));
 	System.out.println(tree.getString(17));
-	System.out.println("Expected: 24, 24");
-	BSTreeNode a = tree.getNode(14);
-	BSTreeNode b = tree.getNode(76);
-	BSTreeNode p1 = tree.findParent(a);
-	BSTreeNode p2 = tree.findParent(b);
-	System.out.println(tree.nodeToString(p1) + " " + tree.nodeToString(p2));
+		
+	System.out.println(tree.rootToString());
+	System.out.println(tree.find(24) + " " + tree.find(14) + " " + tree.find(76) + " " + tree.find(1));
 
-	/*System.out.println(
-	System.out.println(*/
+	System.out.println("Expected: 24, 24");
+	System.out.println(tree.nodeToString(tree.findParent(tree.find(14))));
+	System.out.println(tree.nodeToString(tree.findParent(tree.find(76))));
+
+	System.out.println();
+	tree.printTree();
+	System.out.println();
+	
+	System.out.println("Expected: 24, 76, 24");
+	System.out.println(tree.nodeToString(tree.findGrandparent(tree.find(1))));
+	System.out.println(tree.nodeToString(tree.findGrandparent(tree.find(33))));
+	System.out.println(tree.nodeToString(tree.findGrandparent(tree.find(64))));
     }
 }

@@ -151,17 +151,63 @@ public class BSTree implements BSTOper {
 	}
 
 	//rekursiv metode for getNode() -- hjelpemetode for testing
-	Node getNode(int value) {
+	// Node getNode(int value) {
+	//     if (this.value == value) {
+	// 	return this;
+	//     } else if (left != null) {
+	// 	Node ret = left.getNode(value);
+	// 	if (ret != null) {
+	// 	    return ret;
+	// 	}
+	//     }
+	//     if (right != null) {
+	// 	Node ret = right.getNode(value);
+	// 	if (ret != null) {
+	// 	    return ret;
+	// 	}
+	//     }
+	//     return null;
+	// }
+
+	// rekursiv metode for find()
+	Node find(int value) {
 	    if (this.value == value) {
 		return this;
-	    } else if (left != null) {
-		Node ret = left.getNode(value);
+	    } else if (this.value > value) {
+		if (left != null) {
+		    return left.find(value);
+		} else {
+		    return null;
+		}
+	    } else {
+		if (right != null) {
+		    return right.find(value);
+		} else {
+		    return null;
+		}
+	    }
+	}
+
+	//rekrusiv metode for findGrandparent()
+	Node findGrandparent (Node n) {
+	    if (left != null) {
+		if (left.left == n) {
+		    return this;
+		} else if (left.right == n) {
+		    return this;
+		}
+	        Node ret = left.findGrandparent(n);
 		if (ret != null) {
 		    return ret;
 		}
 	    }
 	    if (right != null) {
-		Node ret = right.getNode(value);
+	        if (right.right == n) {
+		    return this;
+		} else if (right.left == n) {
+		    return this;
+		}
+		Node ret = right.findGrandparent(n);
 		if (ret != null) {
 		    return ret;
 		}
@@ -169,6 +215,20 @@ public class BSTree implements BSTOper {
 	    return null;
 	}
 
+	// print-metode /// brukes til testing
+	void printTree(int height) {
+	    System.out.println(this.toString() + " Height: " + height);
+	    height++;
+	    if (left != null) {
+		left.printTree(height);
+	    }
+	    if (right != null) {
+		right.printTree(height);
+	    }
+	    return;
+	}
+	    
+	
 	
     }
 
@@ -252,12 +312,17 @@ public class BSTree implements BSTOper {
 
 
     //private metoder
-    private Node findParent (Node n) {
+    /* private */ Node findParent (Node n) {
 	return root.findParent(n);
     }
 
-    private Node findGrandparent( Node n ){ return null; }
-    private Node find( int value ){ return null; }
+    /* private */ Node findGrandparent (Node n){
+	return root.findGrandparent(n);
+    }
+    
+    /* private */ Node find (int value){
+	return root.find (value);
+    }
 
 
 
@@ -280,23 +345,27 @@ public class BSTree implements BSTOper {
     // test-metoder ------------------------------------------------------------------------
 
 
-    public void printTre() {
-	
+    public void printTree() {
+	root.printTree(0);
     }
 
     public String getString(int value) {
-    	return root.getNode(value).toString();
+    	return root.find(value).toString();
     } 
 
     public String nodeToString(Node n) {
 	return n.toString();
     }
 
-    public Node getNode(int value) {
+    public String rootToString() {
+	return root.toString();
+    }
+
+    public Node findNode(int value) {
 	// if (root.value == value) {
 	//     return root;
 	// }
-	return root.getNode(value);
+	return root.find(value);
     }
 
 
