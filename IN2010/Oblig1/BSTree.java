@@ -11,17 +11,17 @@ public class BSTree implements BSTOper {
         int value;
 
         // konstruktører, programmer disse
-	Node () {}
-	Node (int v) {
+        Node () {}
+        Node (int v) {
             this.value = v;
         }
 
         //metoder for Node-klassen
-	@Override
-	public String toString() {
-	    return "This is node w/value: " + value + " ";
-	}
-	
+        @Override
+        public String toString() {
+            return "This is node w/value: " + value + " ";
+        }
+        
         void add(int value) {
             if (value < this.value) {
                 if (left != null) {
@@ -107,107 +107,107 @@ public class BSTree implements BSTOper {
             if (right != null) {
                 currSize = right.sortedArray(array, currSize);
             }
-	    return currSize;
+            return currSize;
         }
 
-	//rekursiv metode for findInRange()
-	int findInRange(int[] array, int currSize, int low, int high) {
-	    if (left!= null) {
-		currSize = left.findInRange(array, currSize, low, high);
-	    }
-	    if (this.value >= low && this.value <= high) {
-		array[currSize] = this.value;
-		currSize++;
-	    }
-	    if (right != null) {
-		currSize = right.findInRange(array, currSize, low, high);
-	    }
-	    return currSize;
-	}
+        //rekursiv metode for findInRange()
+        int findInRange(int[] array, int currSize, int low, int high) {
+            if (left!= null) {
+                currSize = left.findInRange(array, currSize, low, high);
+            }
+            if (this.value >= low && this.value <= high) {
+                array[currSize] = this.value;
+                currSize++;
+            }
+            if (right != null) {
+                currSize = right.findInRange(array, currSize, low, high);
+            }
+            return currSize;
+        }
 
-	//rekursiv metode for findParent()
-	Node findParent (Node n) {
-	    if (left != null) {
-		if (left == n) {
-		    return this;
-		} else {
-		    Node ret = left.findParent(n);
-		    if (ret != null) {
-			return ret;
-		    }
-		}
-	    }
-	    if (right != null) {
-		if (right == n) {
-		    return this;
-		} else {
-		    Node ret = right.findParent(n);
-		    if (ret != null) {
-			return ret;
-		    }
-		}
-	    }
-	    return null;
-	}
+        //rekursiv metode for findParent()
+        Node findParent (Node n) {
+            if (left != null) {
+                if (left == n) {
+                    return this;
+                } else {
+                    Node ret = left.findParent(n);
+                    if (ret != null) {
+                        return ret;
+                    }
+                }
+            }
+            if (right != null) {
+                if (right == n) {
+                    return this;
+                } else {
+                    Node ret = right.findParent(n);
+                    if (ret != null) {
+                        return ret;
+                    }
+                }
+            }
+            return null;
+        }
 
-	// rekursiv metode for find()
-	Node find(int value) {
-	    if (this.value == value) {
-		return this;
-	    } else if (this.value > value) {
-		if (left != null) {
-		    return left.find(value);
-		} else {
-		    return null;
-		}
-	    } else {
-		if (right != null) {
-		    return right.find(value);
-		} else {
-		    return null;
-		}
-	    }
-	}
+        // rekursiv metode for find()
+        Node find(int value) {
+            if (this.value == value) {
+                return this;
+            } else if (this.value > value) {
+                if (left != null) {
+                    return left.find(value);
+                } else {
+                    return null;
+                }
+            } else {
+                if (right != null) {
+                    return right.find(value);
+                } else {
+                    return null;
+                }
+            }
+        }
 
-	//rekrusiv metode for findGrandparent()
-	Node findGrandparent (Node n) {
-	    if (left != null) {
-		if (left.left == n) {
-		    return this;
-		} else if (left.right == n) {
-		    return this;
-		}
-	        Node ret = left.findGrandparent(n);
-		if (ret != null) {
-		    return ret;
-		}
-	    }
-	    if (right != null) {
-	        if (right.right == n) {
-		    return this;
-		} else if (right.left == n) {
-		    return this;
-		}
-		Node ret = right.findGrandparent(n);
-		if (ret != null) {
-		    return ret;
-		}
-	    }
-	    return null;
-	}
+        //rekrusiv metode for findGrandparent()
+        Node findGrandparent (Node n) {
+            if (left != null) {
+                if (left.left == n) {
+                    return this;
+                } else if (left.right == n) {
+                    return this;
+                }
+                Node ret = left.findGrandparent(n);
+                if (ret != null) {
+                    return ret;
+                }
+            }
+            if (right != null) {
+                if (right.right == n) {
+                    return this;
+                } else if (right.left == n) {
+                    return this;
+                }
+                Node ret = right.findGrandparent(n);
+                if (ret != null) {
+                    return ret;
+                }
+            }
+            return null;
+        }
 
-	// print-metode /// brukes til testing
-	void printTree(int height) {
-	    System.out.println(this.toString() + " Height: " + height);
-	    height++;
-	    if (left != null) {
-		left.printTree(height);
-	    }
-	    if (right != null) {
-		right.printTree(height);
-	    }
-	    return;
-	}
+        // print-metode /// brukes til testing
+        void printTree(int height) {
+            System.out.println(this.toString() + " Height: " + height);
+            height++;
+            if (left != null) {
+                left.printTree(height);
+            }
+            if (right != null) {
+                right.printTree(height);
+            }
+            return;
+        }
 
         // rekursiv metode for remove()
         boolean remove (int value, Node parent) {
@@ -239,9 +239,9 @@ public class BSTree implements BSTOper {
         
 
 
-    }	    
-	
-	
+    }       
+        
+        
 
     
 
@@ -251,7 +251,7 @@ public class BSTree implements BSTOper {
     }
     BSTree(Node r) {
         this.root = r;
-	this.size = 1;
+        this.size = 1;
     }
 
 
@@ -259,10 +259,10 @@ public class BSTree implements BSTOper {
     public void add (int value) {
         if (root == null) {
             root = new Node(value);
-	    this.size++;
+            this.size++;
         } else {
             root.add(value);
-	    this.size++;
+            this.size++;
         }
     }
 
@@ -328,32 +328,32 @@ public class BSTree implements BSTOper {
         } else {
             int[] ret = new int[this.size];
             root.sortedArray(ret, 0);
-	    return ret;
+            return ret;
         }
     }
 
     public int[] findInRange (int low, int high) {
-	if (root == null) {
-	    return null;
-	} else {
-	    int[] ret = new int[this.size];
-	    root.findInRange(ret, 0, low, high);
-	    return ret;
-	}
+        if (root == null) {
+            return null;
+        } else {
+            int[] ret = new int[this.size];
+            root.findInRange(ret, 0, low, high);
+            return ret;
+        }
     }
 
 
     //private metoder
     /* private */ Node findParent (Node n) {
-	return root.findParent(n);
+        return root.findParent(n);
     }
 
     /* private */ Node findGrandparent (Node n){
-	return root.findGrandparent(n);
+        return root.findGrandparent(n);
     }
     
     /* private */ Node find (int value){
-	return root.find (value);
+        return root.find (value);
     }
 
 
@@ -378,26 +378,26 @@ public class BSTree implements BSTOper {
 
 
     public void printTree() {
-	root.printTree(0);
+        root.printTree(0);
     }
 
     public String getString(int value) {
-    	return root.find(value).toString();
+        return root.find(value).toString();
     } 
 
     public String nodeToString(Node n) {
-	return n.toString();
+        return n.toString();
     }
 
     public String rootToString() {
-	return root.toString();
+        return root.toString();
     }
 
     public Node findNode(int value) {
-	// if (root.value == value) {
-	//     return root;
-	// }
-	return root.find(value);
+        // if (root.value == value) {
+        //     return root;
+        // }
+        return root.find(value);
     }
 
 
