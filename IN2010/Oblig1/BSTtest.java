@@ -18,8 +18,8 @@ class BSTtest {
         BSTree testtre = new BSTree();
 
         if (antall == 0 ) {
-	    
-	    System.out.println("n     antall     høyde");
+            
+            System.out.println("n     antall     høyde");
             for (int ant=1; ant <= 10000000; ant=ant*10) {
                 intarr = tallrekke(ant);
                 for (int i : intarr) { testtre.add(i); }
