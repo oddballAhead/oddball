@@ -1,0 +1,81 @@
+(package-initialize)
+
+;; Start emacs in fullscreen:
+;; (w32-send-sys-command 61488)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
+ '(custom-enabled-themes (quote (atom-one-dark)))
+ '(custom-safe-themes
+   (quote
+    ("adf5275cc3264f0a938d97ded007c82913906fc6cd64458eaae6853f6be287ce" default)))
+ '(initial-frame-alist (quote ((fullscreen . maximized))))
+ '(package-selected-packages (quote (atom-one-dark-theme java-snippets auto-complete)))
+ '(show-paren-mode t))
+
+;; Enable darkroom-mode
+(add-to-list 'load-path "d:/Darkroom/")
+(require 'darkroom-mode)
+
+;; Let emacs find the exe-file for darkroom
+(setq exec-path (cons "d:/Darkroom/" exec-path))
+
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(package-refresh-contents)
+(package-initialize)
+
+
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "#2e3436" :foreground "#eeeeec" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "outline" :family "DejaVu Sans Mono"))))
+ '(menu ((t (:inverse-video t))))
+ '(tool-bar ((t (:background "gray28" :foreground "snow" :box (:line-width 1 :color "black" :style released-button))))))
+
+;; color face
+;;(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
+;;(require 'color-theme)
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Line Numbering
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Note: I'm doing this in Emacs 24 on OSX
+
+;; Swap line numbers using C-<f5>, you can change this of course
+(autoload 'linum-mode "linum" "toggle line numbers on/off" t)
+(global-set-key (kbd "C-<f5>") 'linum-mode)
+
+;; Show all line numbering by default (you can turn this off if you would like)
+(line-number-mode 1)
+(linum-mode 1)
+(global-linum-mode 1)
+
+;; Adjust Spacing
+(setq linum-format "%d ")
+
+;; fix tab-problems
+(setq-default indent-tabs-mode nil)
+
+
+;; Enable YASnippets
+(add-to-list 'load-path "~/path-to-yasnippet")
+(require 'yasnippet)
+(yas-global-mode 1)
+
+;; set HOME startup path    // not working!
+;; (setq default-directory "d:/Documents/")
+(cd "d:/Documents/")
+(setq default-directory "d:/Documents/")
