@@ -1,0 +1,186 @@
+(package-initialize)
+
+;; Start emacs in fullscreen:
+;; (w32-send-sys-command 61488)
+
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
+ '(column-number-mode t)
+ '(compilation-message-face (quote default))
+ '(cua-global-mark-cursor-color "#2aa198")
+ '(cua-normal-cursor-color "#657b83")
+ '(cua-overwrite-cursor-color "#b58900")
+ '(cua-read-only-cursor-color "#859900")
+ '(custom-enabled-themes (quote (ample-zen)))
+ '(custom-safe-themes
+   (quote
+    ("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "d8dc153c58354d612b2576fea87fe676a3a5d43bcc71170c62ddde4a1ad9e1fb" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "2a7beed4f24b15f77160118320123d699282cbf196e0089f113245d4b729ba5d" "adf5275cc3264f0a938d97ded007c82913906fc6cd64458eaae6853f6be287ce" default)))
+ '(fci-rule-color "#3E4451")
+ '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
+ '(highlight-symbol-colors
+   (--map
+    (solarized-color-blend it "#fdf6e3" 0.25)
+    (quote
+     ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
+ '(highlight-symbol-foreground-color "#586e75")
+ '(highlight-tail-colors
+   (quote
+    (("#eee8d5" . 0)
+     ("#B4C342" . 20)
+     ("#69CABF" . 30)
+     ("#69B7F0" . 50)
+     ("#DEB542" . 60)
+     ("#F2804F" . 70)
+     ("#F771AC" . 85)
+     ("#eee8d5" . 100))))
+ '(hl-bg-colors
+   (quote
+    ("#DEB542" "#F2804F" "#FF6E64" "#F771AC" "#9EA0E5" "#69B7F0" "#69CABF" "#B4C342")))
+ '(hl-fg-colors
+   (quote
+    ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
+ '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
+ '(initial-frame-alist (quote ((fullscreen . maximized))))
+ '(line-number-mode nil)
+ '(magit-diff-use-overlays nil)
+ '(nrepl-message-colors
+   (quote
+    ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
+ '(package-selected-packages
+   (quote
+    (color-theme-solarized abyss-theme solarized-theme ample-zen-theme sml-mode atom-one-dark-theme java-snippets auto-complete)))
+ '(pos-tip-background-color "#eee8d5")
+ '(pos-tip-foreground-color "#586e75")
+ '(show-paren-mode t)
+ '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
+ '(term-default-bg-color "#fdf6e3")
+ '(term-default-fg-color "#657b83")
+ '(tetris-x-colors
+   [[229 192 123]
+    [97 175 239]
+    [209 154 102]
+    [224 108 117]
+    [152 195 121]
+    [198 120 221]
+    [86 182 194]])
+ '(vc-annotate-background "#3b3b3b")
+ '(vc-annotate-background-mode nil)
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#dd5542")
+     (40 . "#CC5542")
+     (60 . "#fb8512")
+     (80 . "#baba36")
+     (100 . "#bdbc61")
+     (120 . "#7d7c61")
+     (140 . "#6abd50")
+     (160 . "#6aaf50")
+     (180 . "#6aa350")
+     (200 . "#6a9550")
+     (220 . "#6a8550")
+     (240 . "#6a7550")
+     (260 . "#9b55c3")
+     (280 . "#6CA0A3")
+     (300 . "#528fd1")
+     (320 . "#5180b3")
+     (340 . "#6380b3")
+     (360 . "#DC8CC3"))))
+ '(vc-annotate-very-old-color "#DC8CC3")
+ '(weechat-color-list
+   (quote
+    (unspecified "#fdf6e3" "#eee8d5" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#657b83" "#839496")))
+ '(xterm-color-names
+   ["#eee8d5" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#073642"])
+ '(xterm-color-names-bright
+   ["#fdf6e3" "#cb4b16" "#93a1a1" "#839496" "#657b83" "#6c71c4" "#586e75" "#002b36"]))
+
+;; Enable darkroom-mode
+(add-to-list 'load-path "d:/Darkroom/")
+(require 'darkroom-mode)
+
+;; Let emacs find the exe-file for darkroom
+(setq exec-path (cons "d:/Darkroom/" exec-path))
+
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(package-refresh-contents)
+(package-initialize)
+
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "#2e3436" :foreground "#eeeeec" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "outline" :family "DejaVu Sans Mono"))))
+ '(menu ((t (:inverse-video t))))
+ '(tool-bar ((t (:background "gray28" :foreground "snow" :box (:line-width 1 :color "black" :style released-button))))))
+
+;; color face
+;;(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
+;;(require 'color-theme)
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Line Numbering
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Note: I'm doing this in Emacs 24 on OSX
+
+;; Swap line numbers using C-<f5>, you can change this of course
+(autoload 'linum-mode "linum" "toggle line numbers on/off" t)
+(global-set-key (kbd "C-<f5>") 'linum-mode)
+
+;; Show all line numbering by default (you can turn this off if you would like)
+(line-number-mode 1)
+(linum-mode 1)
+(global-linum-mode 1)
+
+;; Adjust Spacing
+(setq linum-format "%d ")
+
+;; fix tab-problems
+(setq-default indent-tabs-mode nil)
+
+
+;; Enable YASnippets
+(add-to-list 'load-path "~/path-to-yasnippet")
+(require 'yasnippet)
+(yas-global-mode 1)
+
+;; set HOME startup path    // not working!
+;; (setq default-directory "d:/Documents/")
+;; (cd "d:/Documents/")
+;; (setq default-directory "d:/Documents/")
+
+;; enable zen-mode:
+(add-to-list 'load-path "d:/Emacs-Zen-Mode/")
+(require 'zen-mode)
+
+;; set tab-distance in c-mode to 4:
+(setq-default c-basic-offset 4)
+
+;; scroll-bar editing
+;; (scroll-bar-mode -1)  ;-- to disable scrollbars
+
+
+;;scroll window up/down by one line
+
+
+(global-set-key (kbd "M-n") (kbd "C-u 2 C-v"))
+(global-set-key (kbd "M-p") (kbd "C-u 2 M-v"))
+
+
+;; remove scroll-bar from minibuffer:
+(set-window-scroll-bars (minibuffer-window) 0 'none)
+(set-window-scroll-bars (minibuffer-window) nil nil)
+
